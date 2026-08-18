@@ -9,6 +9,7 @@ def get_stock(ticker, start, end):
     if isinstance(data.columns, pd.MultiIndex): #checks if object data.columns is of type pd.MultiIndex
         data.columns = data.columns.get_level_values(0)
     data = data.loc[:, ~data.columns.duplicated()] #uses ~ (bitwise NOT operator) that flips duplicates from false to true
+    data = data.reset_index()
     data["Ticker"] = ticker #creates a new column named ticker
     return data
 
