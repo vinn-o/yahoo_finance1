@@ -19,6 +19,14 @@ def main():
     PDBC = get_stock("PDBC", start, end)
     IAU = get_stock("IAU", start, end)
 
+    SPY= SPY.reset_index().pivot(index="Date", columns="Tickers", values="Close")
+    IYW= IYW.reset_index().pivot(index="Date", columns="Tickers", values="Close")
+    VT = VT.reset_index().pivot(index="Date", columns="Tickers", values="Close")
+    DBA= DBA.reset_index().pivot(index="Date", columns="Tickers", values="Close")
+    TLT= TLT.reset_index().pivot(index="Date", columns="Tickers", values="Close")
+    PDBC= PDBC.reset_index().pivot(index="Date", columns="Tickers", values="Close")
+    IAU= IAU.reset_index().pivot(index="Date", columns="Tickers", values="Close")
+    
 
 if __name__ == "__main__":
     main()
