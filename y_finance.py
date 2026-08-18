@@ -1,11 +1,13 @@
 import pandas as pd
-import y_finance as yf
+import yfinance as yf
 import numpy as np
 import datetime
 from datetime import time, datetime, timezone
 
 def get_stock(ticker, start, end):
     data = yf.download(ticker, start=start,end=end, auto_adjust=False)
+    if isinstance(data.columns, data.MultiIndex):
+        pass
 def main():
     start = datetime(2026, 1, 1)
     end = datetime.today()
