@@ -6,8 +6,15 @@ from datetime import time, datetime, timezone
 
 def get_stock(ticker, start, end):
     data = yf.download(ticker, start=start,end=end, auto_adjust=False)
-    if isinstance(data.columns, pd.MultiIndex):
-        pass
+    if isinstance(data.columns, pd.MultiIndex): #checks if object data.columns is of type pd.MultiIndex
+        data.columns = data.columns.get_level_values(0)
+    data = data.loc[:, ~data.columns.duplicated()] #uses ~ (bitwise NOT operator) that flips duplicates from false to true
+    data["Ticker"] = ticker #creates a new column named ticker
+
+
+
+
+    
 def main():
     start = datetime(2026, 1, 1)
     end = datetime.today()
