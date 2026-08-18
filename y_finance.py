@@ -10,6 +10,7 @@ def get_stock(ticker, start, end):
         data.columns = data.columns.get_level_values(0)
     data = data.loc[:, ~data.columns.duplicated()] #uses ~ (bitwise NOT operator) that flips duplicates from false to true
     data["Ticker"] = ticker #creates a new column named ticker
+    return data
 
 
 
