@@ -1,5 +1,6 @@
 from y_finance import get_stock
 import datetime 
+import pandas as pd
 from datetime import date, datetime, timezone
 
 def main():
@@ -19,14 +20,17 @@ def main():
     PDBC = get_stock("PDBC", start, end)
     IAU = get_stock("IAU", start, end)
 
-    SPY= SPY.reset_index().pivot(index="Date", columns="Tickers", values="Close")
-    IYW= IYW.reset_index().pivot(index="Date", columns="Tickers", values="Close")
-    VT = VT.reset_index().pivot(index="Date", columns="Tickers", values="Close")
-    DBA= DBA.reset_index().pivot(index="Date", columns="Tickers", values="Close")
-    TLT= TLT.reset_index().pivot(index="Date", columns="Tickers", values="Close")
-    PDBC= PDBC.reset_index().pivot(index="Date", columns="Tickers", values="Close")
-    IAU= IAU.reset_index().pivot(index="Date", columns="Tickers", values="Close")
+    SPY= SPY.reset_index().pivot(index="Date", columns="Ticker", values="Close")
+    IYW= IYW.reset_index().pivot(index="Date", columns="Ticker", values="Close")
+    VT = VT.reset_index().pivot(index="Date", columns="Ticker", values="Close")
+    DBA= DBA.reset_index().pivot(index="Date", columns="Ticker", values="Close")
+    TLT= TLT.reset_index().pivot(index="Date", columns="Ticker", values="Close")
+    PDBC= PDBC.reset_index().pivot(index="Date", columns="Ticker", values="Close")
+    IAU= IAU.reset_index().pivot(index="Date", columns="Ticker", values="Close")
     
-
+    stock = pd.concat([SPY, IYW, VT, DBA, TLT, PDBC, IAU], #pandas  function to join different datas
+                      axis=1,  # axis =1 stacks columns horizontally axis =0 satck rows on tops
+                      join = "outer")
+    print(stock.head())
 if __name__ == "__main__":
     main()
