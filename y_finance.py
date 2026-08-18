@@ -6,7 +6,7 @@ from datetime import time, datetime, timezone
 
 def get_stock(ticker, start, end):
     data = yf.download(ticker, start=start,end=end, auto_adjust=False)
-    if isinstance(data.columns, data.MultiIndex):
+    if isinstance(data.columns, pd.MultiIndex):
         pass
 def main():
     start = datetime(2026, 1, 1)
