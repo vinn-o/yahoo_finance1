@@ -30,7 +30,8 @@ def main():
     
     stock = pd.concat([SPY, IYW, VT, DBA, TLT, PDBC, IAU], #pandas  function to join different datas
                       axis=1,  # axis =1 stacks columns horizontally axis =0 satck rows on tops
-                      join = "outer")
+                      join = "outer") #takes even empty ones and fill missing with NaN
+    
     print(stock.head())
 if __name__ == "__main__":
     main()
