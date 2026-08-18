@@ -22,7 +22,9 @@ def main():
     end = datetime.today()
     ticker = "IYW" # IYW track U.S technology company market capitalization index
     d = get_stock(ticker, start, end)
-    print(d)
+    # print(d.head())
+    d = d.pivot(index="Date", columns="Ticker", values="Close") #pivot changes the outlook of final data
+    print(d.head())
 
     
 
