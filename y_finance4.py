@@ -10,7 +10,15 @@ def main():
 
     tickers = ["SPY", "IYW", "VT", "DBA", "TLT", "PDBC", "IAU"]
 
-    data
+    data = {}
+
+    for i in tickers:
+        data[i] = get_stock(i, start, end).reset_index().pivot(index="Date", columns="Ticker", values="Close")
+
+    stock = pd.concat([data[i] for i in tickers],
+                      axis=1,
+                      join="outer")
+    print(stock.head())
 
 
 if __name__ == "__main__":
