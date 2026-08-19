@@ -11,6 +11,17 @@ def main():
     tickers = ["SPY", "IYW", "VT", "DBA", "TLT", "PDBC", "IAU"]  #all tickers in one list for DRY
     data = {}
 
+    for i in tickers:
+        data[i] = get_stock(i, start, end)
+
+    for i in tickers:
+        data[i] = data[i].reset_index().pivot(index="Date", columns="Ticker", values="Close")
+
+    df = pd.concat([data[i] for i in tickers],
+                   axis =1,
+                   join ="outer")
+    print(df.head())
+
 
 
 
