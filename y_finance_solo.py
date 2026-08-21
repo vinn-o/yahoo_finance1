@@ -25,8 +25,10 @@ def main():
         data[i] = get_stock(i, start, end).pivot(index="Date", columns="Tickers", values="Close")  # one loop for DRY,
 
         # tickers are added to each i in get_stock and placed in the library
-    
-    print(data)
+    s = pd.concat([data[i] for i in tickers],
+                   axis=1,
+                   join="outer")
+    print(s.head())
 
 
 
