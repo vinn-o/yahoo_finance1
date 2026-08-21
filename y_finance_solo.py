@@ -1,6 +1,8 @@
 import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
+import datetime
+
 
 
 def get_stock(ticker, start, end):
@@ -11,4 +13,16 @@ def get_stock(ticker, start, end):
     data = data.reset_index()   #to reset index from dates to numbers
     data["Tickers"] = ticker  #for new column called Tickers
     return data
+
+def main():
+    start = datetime.datetime(2018, 1,1)
+    end = datetime.datetime.today()
+    ticker = ["SPY", "VT", "IYW", "TLT", "DBA", "PDBC", "IAU"]
+    
+
+
+
+
+if __name__ == "__main__":
+    main()
     
