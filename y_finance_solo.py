@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 
 def get_stock(ticker, start, end):
-    data = yf.download(ticker, start=start, end=end, auto_adjust=False)
+    data = yf.download(ticker, start=start, end=end, auto_adjust=False) #auto_adjust to not adjust the closing and have column for the adjust
     if isinstance(data.columns, pd.MultiIndex):
         data.columns = data.columns.get_value_levels(0)
-        
+    data = data.loc[:, ~data.columns.duplicated()]
     
