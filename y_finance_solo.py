@@ -17,8 +17,13 @@ def get_stock(ticker, start, end):
 def main():
     start = datetime.datetime(2018, 1,1)
     end = datetime.datetime.today()
-    ticker = ["SPY", "VT", "IYW", "TLT", "DBA", "PDBC", "IAU"]
-    
+    tickers = ["SPY", "VT", "IYW", "TLT", "DBA", "PDBC", "IAU"]
+
+    data = {}
+
+    for i in tickers:
+        data[i] = 
+
 
 
 
