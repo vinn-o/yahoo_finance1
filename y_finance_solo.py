@@ -17,14 +17,16 @@ def get_stock(ticker, start, end):
 def main():
     start = datetime.datetime(2018, 1,1)
     end = datetime.datetime.today()
-    # tickers = ["SPY", "VT", "IYW", "TLT", "DBA", "PDBC", "IAU"] #all the tickers
-    dd = get_stock("SPY", start, end)
-    print(dd.head())
-    # data = {} # empty dict that 
+    tickers = ["SPY", "VT", "IYW", "TLT", "DBA", "PDBC", "IAU"] #all the tickers
 
-    # for i in tickers:
-    #     data[i] = get_stock(i, start, end).pivot(index="Date")
+    data = {} # empty dict that 
 
+    for i in tickers:
+        data[i] = get_stock(i, start, end).pivot(index="Date", columns="Tickers", values="Close")  # one loop for DRY,
+
+        # tickers are added to each i in get_stock and placed in the library
+    
+    print(data)
 
 
 
