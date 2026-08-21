@@ -3,6 +3,7 @@ import yfinance as yf
 import numpy as np
 import datetime
 from datetime import time, datetime, timezone
+import matplotlib.pyplot as plt
 
 def get_stock(ticker, start, end):
     data = yf.download(ticker, start=start,end=end, auto_adjust=False)
@@ -25,6 +26,8 @@ def main():
     # print(d.head())
     d = d.pivot(index="Date", columns="Ticker", values="Close") #pivot changes the outlook of final data
     print(d.head())
+
+
 
     
 

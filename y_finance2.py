@@ -21,7 +21,7 @@ def main():
     IAU = get_stock("IAU", start, end)
 
     SPY= SPY.reset_index().pivot(index="Date", columns="Ticker", values="Close")
-    IYW= IYW.reset_index().pivot(index="Date", columns="Ticker", values="Close")
+    IYW= IYW.reset_index().pivot(index="Date", columns="Ticker", values="Close")            #not DRY
     VT = VT.reset_index().pivot(index="Date", columns="Ticker", values="Close")
     DBA= DBA.reset_index().pivot(index="Date", columns="Ticker", values="Close")
     TLT= TLT.reset_index().pivot(index="Date", columns="Ticker", values="Close")
