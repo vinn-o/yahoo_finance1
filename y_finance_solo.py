@@ -8,6 +8,7 @@ def get_stock(ticker, start, end):
     if isinstance(data.columns, pd.MultiIndex):
         data.columns = data.columns.get_value_levels(0)
     data = data.loc[:, ~data.columns.duplicated()]
-    data = data.reset_index()
-    data["Tickers"] = ticker
+    data = data.reset_index()   #to reset index from dates to numbers
+    data["Tickers"] = ticker  #for new column called Tickers
+    return data
     
